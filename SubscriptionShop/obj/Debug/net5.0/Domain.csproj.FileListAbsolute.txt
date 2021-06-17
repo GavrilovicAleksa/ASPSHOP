@@ -1,0 +1,15 @@
+C:\Users\Aleksa\source\repos\SubscriptionShop\bin\Debug\net5.0\Domain.deps.json
+C:\Users\Aleksa\source\repos\SubscriptionShop\bin\Debug\net5.0\Domain.runtimeconfig.json
+C:\Users\Aleksa\source\repos\SubscriptionShop\bin\Debug\net5.0\Domain.runtimeconfig.dev.json
+C:\Users\Aleksa\source\repos\SubscriptionShop\bin\Debug\net5.0\Domain.dll
+C:\Users\Aleksa\source\repos\SubscriptionShop\bin\Debug\net5.0\ref\Domain.dll
+C:\Users\Aleksa\source\repos\SubscriptionShop\bin\Debug\net5.0\Domain.pdb
+C:\Users\Aleksa\source\repos\SubscriptionShop\obj\Debug\net5.0\Domain.csprojAssemblyReference.cache
+C:\Users\Aleksa\source\repos\SubscriptionShop\obj\Debug\net5.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Aleksa\source\repos\SubscriptionShop\obj\Debug\net5.0\Domain.AssemblyInfoInputs.cache
+C:\Users\Aleksa\source\repos\SubscriptionShop\obj\Debug\net5.0\Domain.AssemblyInfo.cs
+C:\Users\Aleksa\source\repos\SubscriptionShop\obj\Debug\net5.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Aleksa\source\repos\SubscriptionShop\obj\Debug\net5.0\Domain.dll
+C:\Users\Aleksa\source\repos\SubscriptionShop\obj\Debug\net5.0\ref\Domain.dll
+C:\Users\Aleksa\source\repos\SubscriptionShop\obj\Debug\net5.0\Domain.pdb
+C:\Users\Aleksa\source\repos\SubscriptionShop\obj\Debug\net5.0\Domain.genruntimeconfig.cache
