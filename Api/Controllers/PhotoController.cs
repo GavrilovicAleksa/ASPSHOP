@@ -1,4 +1,11 @@
 ﻿using Application;
+using Application.Commands.Brand;
+using Application.Commands.Photo;
+using Application.DataTransfer;
+using Application.DataTransfer.PhotoDataTransfer;
+using Application.Queries.Brand;
+using Application.Searches;
+using Implementation.Queries.Product;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -19,38 +26,38 @@ namespace Api.Controllers
         [HttpGet]
         //[Authorize]
         public IActionResult Get(
-            [FromQuery] BrandSearch search,
-            [FromServices] ISearchBrandsQuery query)
+            [FromQuery] PhotoSearch search,
+            [FromServices] ISearchPhotosQuery query)
         {
             return Ok(executor.ExecuteQuery(query, search));
         }
 
         [HttpGet("{id}")]
         public IActionResult Get(int id,
-            [FromServices] BrandSearch search,
-           [FromServices] IGetSingleBrandQuery query)
+            [FromServices] PhotoSearch search,
+           [FromServices] IGetSinglePhotoQuery query)
         {
             search.Id = id;
             return Ok(executor.ExecuteQuery(query, search));
         }
 
         [HttpPost]
-        public void Post([FromBody] BrandDto dto,
-            [FromServices] ICreateBrandCommand command)
+        public void Post([FromBody] PhotoDto dto,
+            [FromServices] ICreatePhotoCommand command)
         {
             executor.ExecuteCommand(command, dto);
         }
 
         [HttpDelete("{id}")]
-        public void Delete([FromBody] RemoveBrandDto dto,
-            [FromServices] IRemoveBrandCommand command)
+        public void Delete([FromBody] RemoveEntityDto dto,
+            [FromServices] IRemovePhotoCommand command)
         {
             executor.ExecuteCommand(command, dto);
         }
 
         [HttpPut]
-        public void Put(BrandDto dto,
-            [FromServices] IUpdateBrandCommand command)
+        public void Put(PhotoDto dto,
+            [FromServices] IUpdatePhotoCommand command)
         {
             executor.ExecuteCommand(command, dto);
         }

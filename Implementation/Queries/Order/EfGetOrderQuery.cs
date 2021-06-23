@@ -1,7 +1,8 @@
 ﻿using Application.DataTransfer.BrandDataTransfer;
-using Application.DataTransfer.CartDataTransfer;
+using Application.DataTransfer.Order;
 using Application.Queries;
 using Application.Queries.Cart;
+using Application.Queries.Order;
 using Application.Searches;
 using DataAccess;
 using System;
@@ -10,13 +11,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Implementation.Queries.Cart
+namespace Implementation.Queries.Order
 {
-    public class EfGetCartQuery : IGetCartQuery
+    public class EfGetOrderQuery : IGetOrderQuery
     {
         private readonly Context _context;
 
-        public EfGetCartQuery(Context context)
+        public EfGetOrderQuery(Context context)
         {
             this._context = context;
         }
@@ -25,30 +26,27 @@ namespace Implementation.Queries.Cart
 
         public string Name => "Brand Search";
 
-        public PagedResponse<GetCartDto> Execute(CartSearch search)
+        public PagedResponse<GetOrderDto> Execute(OrderSearch search)
         {
-            var query = _context.Carts.AsQueryable();
+            var query = _context.Orders.AsQueryable();
 
             if (search.UserId == null)
             {
                 query = query.Where(x => x.UserId.Equals(search.UserId));
-            } else
-            {
-                query = query.Where(x => x.Id.Equals(search.CartId));
             }
 
             var skipCount = search.PerPage * (search.Page - 1);
 
-            var reponse = new PagedResponse<GetCartDto>
+            var reponse = new PagedResponse<GetOrderDto>
             {
                 Page = search.Page,
                 PerPage = search.PerPage,
                 Count = query.Count(),
-                Data = query.Skip(skipCount).Take(search.PerPage).Select(x => new GetCartDto
+                Data = query.Skip(skipCount).Take(search.PerPage).Select(x => new GetOrderDto
                 {
-                    Id = x.Id,
-                    User = x.User,
-                    Products = x.CartItem.Select(x => x.Product)
+                    DeliveredAt = x.DeliveredAt.ToString(),
+                    PlacedAt = x.PlacedAt.ToString(),
+                    Products = x.ProductOrders.Select(x => x.Product),
                 }).ToList()
             };
 

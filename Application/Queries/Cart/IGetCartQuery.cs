@@ -1,4 +1,6 @@
 ﻿using Application.DataTransfer.BrandDataTransfer;
+using Application.DataTransfer.CartDataTransfer;
+using Application.Searches;
 using System;
 using System.Collections.Generic;
 using System.Linq;

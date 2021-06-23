@@ -13,6 +13,6 @@ namespace Application.DataTransfer.CartDataTransfer
 
         public Domain.User User { get; set; }
 
-        public ICollection<CartItem> CartItem { get; set; }
+        public IEnumerable<Domain.Product> Products { get; set; }
     }
 }

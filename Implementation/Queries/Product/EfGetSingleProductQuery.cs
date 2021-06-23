@@ -30,7 +30,7 @@ namespace Implementation.Queries.Product
 
             if (product == null)
             {
-                throw new EntityNotFoundException(search.Id, typeof(Domain.User));
+                throw new EntityNotFoundException(search.Id, typeof(Domain.Product));
             }
 
             var response = new SingleResponse<GetProductDto>

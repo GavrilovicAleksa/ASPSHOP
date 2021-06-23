@@ -1,14 +1,15 @@
 ﻿using Application.DataTransfer.Order;
-using Application.Searches;
+using Application.Queries;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Queries.Order
+namespace Application.Searches
 {
-    public interface IGetOrderQuery : IQuery<OrderSearch, PagedResponse<GetOrderDto>>
+    public class OrderSearch : PagedResponse<GetOrderDto>
     {
+        public int UserId { get; set; }
     }
 }

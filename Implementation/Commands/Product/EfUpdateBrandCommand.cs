@@ -1,5 +1,7 @@
 ﻿using Application.Commands.Brand;
+using Application.Commands.Photo;
 using Application.DataTransfer.BrandDataTransfer;
+using Application.DataTransfer.PhotoDataTransfer;
 using Application.Exceptions;
 using DataAccess;
 using System;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Implementation.Commands.Brand
 {
-    public class EfUpdatePhotoCommand : IUpdateBrandCommand
+    public class EfUpdatePhotoCommand : IUpdatePhotoCommand
     {
         public int Id => 4;
 
@@ -24,28 +26,33 @@ namespace Implementation.Commands.Brand
 
         }
 
-        public void Execute(BrandDto request)
+        public void Execute(PhotoDto request)
         {
-            var brand = _context.Brands.Find(request.Id);
+            var photo = _context.Photos.Find(request.Id);
 
-            if (brand == null)
+            if (photo == null)
             {
-                throw new EntityNotFoundException(request.Id, typeof(Domain.Brand));
+                throw new EntityNotFoundException(request.Id, typeof(Domain.Photo));
             }
 
-            var manager = _context.Users.Find(request.UserId);
+            var owner = _context.Users.Find(request.UserId);
 
-            if(manager == null)
+            if(owner == null)
             {
                 throw new EntityNotFoundException(request.Id, typeof(Domain.User));
             }
 
-            brand.Name = request.Name;
-            brand.Email = request.Email;
-            brand.Description = request.Description;
-            brand.Slogan = request.Slogan;
-            brand.Manager = manager;
-            brand.UpdatedAt = new DateTime();
+            var product = _context.Products.Find(request.ProductId);
+
+            if (product == null)
+            {
+                throw new EntityNotFoundException(request.Id, typeof(Domain.Product));
+            }
+
+            photo.User = owner;
+            photo.url = request.Url;
+            photo.Product = product;
+            photo.UpdatedAt = new DateTime();
 
             _context.SaveChanges();
         }
